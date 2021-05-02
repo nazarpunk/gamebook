@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 50rem;
+    display: inline-block;
+    padding: 1rem;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    display: block;
+    margin: 0 auto;
+}
