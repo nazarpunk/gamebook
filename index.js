@@ -11,12 +11,21 @@ document.addEventListener(`DOMContentLoaded`, () => {
 	    content = ``,
 	    buttons = [];
 
+
+	const nodes = []
+		, edges = [];
+
 	const save = () => {
+		nodes.push({id: index, label: `${index}`});
+
 		data[index] = {
 			text   : content,
 			buttons: buttons
 		};
 		content = ``;
+
+		for (const btn of buttons) edges.push({from: index, to: btn[0], arrows: `to`});
+
 		buttons = [];
 	};
 
@@ -47,11 +56,18 @@ document.addEventListener(`DOMContentLoaded`, () => {
 		$main.querySelectorAll(`p:empty`).forEach($p => $p.remove());
 
 		for (const btn of data[id].buttons) {
-			$main.insertAdjacentHTML(`beforeend`, `<a href="#${btn[0]}">${btn[1]}</a>`);
+			$main.insertAdjacentHTML(`beforeend`, `<a href="#${btn[0]}" class="button">${btn[1]} <span>${btn[0]}</span></a>`);
 		}
 
 	};
 
 	addEventListener(`hashchange`, step);
 	step();
+
+	// vis
+	new vis.Network(document.getElementById('vis'), {
+		nodes: new vis.DataSet(nodes),
+		edges: new vis.DataSet(edges)
+	}, {});
+
 });
