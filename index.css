@@ -9,6 +9,7 @@ body {
     align-items: center;
     color: var(--color);
     background-color: #6f7575;
+    margin: 0;
 }
 
 main {
