@@ -1,0 +1,46 @@
+body {
+	font-size: 1rem;
+	margin: 0;
+	color: #e4e6eB;
+	background-color: #18191a;
+}
+
+.container {
+	max-width: 50rem;
+	margin: 1rem auto;
+	padding: 1rem;
+	border-radius: 7px;
+	background-color: #242526;
+}
+
+.button {
+	position: relative;
+	display: block;
+	margin: 1rem 0;
+	padding: .5rem .8rem;
+	text-align: center;
+	text-decoration: none;
+	border: 1px solid gray;
+	border-radius: .5rem;
+	background-color: var(--bg);
+	--bg: white;
+}
+
+.button:hover {
+	--bg: #d6d6d6;
+}
+
+.button span {
+	font-size: .8rem;
+	position: absolute;
+	top: 6px;
+	right: 6px;
+}
+
+#game {
+
+}
+
+#vis {
+	height: 400px;
+}
