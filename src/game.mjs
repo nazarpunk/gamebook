@@ -1,48 +1,40 @@
-const rButton = /^\s*->\s*(\d+)\s*$/;
-const rBlock = /^\s*\{\s*(\d+)\s*}\s*$/;
+const rBlock = /^\s*#\s*(\d+)\s*$/;
 const rNewLine = /\r?\n/;
 
-class Button {
-	/**
-	 * @param {number} id
-	 * @param {string} text
-	 */
-	constructor(id, text) {
-		this.id = id;
-		this.text = text;
-	}
-}
+const books = {
+	'harrison-harry_become-steel_rat' : 'Гарри Гаррисон - Стань стальной крысой!',
+	'packard-edward_mystery-of-castle': 'Эдвард Паккард - Тайна Заброшенного Замка',
+	//'test'                            : 'Test',
+};
 
 class Child {
 	/**
 	 * @param {number} id
-	 * @param {string} text
-	 * @param {Button[]} buttons
 	 */
-	constructor(id, text, buttons) {
+	constructor(id) {
 		this.id = id;
-		this.text = text;
-		this.buttons = [];
 	}
+
+	text = '';
 }
 
 
 class Game {
-	/**
-	 * @param {HTMLElement} container
-	 * @param {string} path
-	 */
-	constructor(container, path) {
-		this.path = path;
+	constructor() {
 
-		this.gameDiv = document.createElement('div');
-		this.gameDiv.classList.add('game');
-		this.gameDiv.style.display = 'none';
-		container.appendChild(this.gameDiv);
+		this.container = document.querySelector('.container');
+		this.gameDiv = document.querySelector('.game');
+		this.visDiv = document.querySelector('.vis');
 
-		this.visDiv = document.createElement('div');
-		this.visDiv.classList.add('vis');
-		container.appendChild(this.visDiv);
+		this.startLink = document.querySelector('.menu [data-action=start]');
+
+		this.listLink = document.querySelector('.menu [data-action=list]');
+		this.listLink.addEventListener('click', () => {
+			const url = new URL(location.href);
+			url.searchParams.delete('book');
+			url.hash = '';
+			this.listLink.href = url.toString();
+		});
 
 		this.nodes = new vis.DataSet();
 		this.edges = new vis.DataSet();
@@ -59,15 +51,34 @@ class Game {
 			}
 		);
 
-		this.converter = new showdown.Converter();
+		this.converter = new showdown.Converter({optionKey: 'value'});
 
 		this.step = this.step.bind(this);
+
+		this.vis.on('click', params => {
+			const id = this.vis.getNodeAt(params.pointer.DOM);
+			if (Number.isInteger(id)) {
+				location.hash = id;
+			}
+		});
+
 	}
 
+	way = true;
+
+	/** @type {HTMLAnchorElement} */ listLink;
+	/** @type {HTMLAnchorElement} */ startLink;
+
+	/** @type {HTMLElement} */ container;
 	/** @type {HTMLElement} */ gameDiv;
 	/** @type {HTMLElement} */ visDiv;
 
+	/** @type {string} */ base;
+
 	/** @type {Map<number, Child>} */ childs = new Map();
+
+
+	/** @type {number[]} */ history = [];
 
 	/**
 	 * @private
@@ -78,49 +89,49 @@ class Game {
 
 		const complete = () => {
 			const child = this.childs[index];
+			if (!child) {
+				console.warn('complete: no child');
+				return;
+			}
 
 			child.text = child.text.trim();
 
-			const matches = child.text.matchAll(/\[\d+]\(#(\d+)\)/g);
+			const matches = child.text.matchAll(/\[[^\]]+]\(#(\d+)\)/g);
 			for (const match of matches) {
 				const to = +match[1];
 				const id = `${index}-${to}`;
 
-				if (!this.edges.get(id)) {
-					this.edges.add({id: id, from: index, to: to, arrows: `to`});
+				if (this.way && !this.edges.get(id)) {
+					const edge = this.edges.get(`${to}-${index}`);
+					if (edge) {
+						this.edges.update([{id: edge.id, arrows: 'to, from'}]);
+					} else {
+						this.edges.add({id: id, from: index, to: to, arrows: 'to'});
+					}
 				}
 			}
 
-			child.text = this.converter.makeHtml(child.text);
+			child.text = this.converter.makeHtml(child.text).replaceAll('src="image/', `src="book/${this.base}/image/`);
 
-			this.nodes.add({id: index, label: `${index}`});
-			for (const button of this.childs[index].buttons) {
-				button.text = this.converter.makeHtml(button.text.trim());
-				this.edges.add({from: index, to: button.id, arrows: `to`});
+
+			if (this.way) {
+				this.nodes.add({id: index, label: `${index}`, fixed: index === 0});
 			}
-
 		};
 
 		for (let str of text.split(rNewLine)) {
 			if (rBlock.test(str)) {
 				if (index >= 0) complete();
 				index = +str.match(rBlock)[1];
-				this.childs[index] = new Child(index, '', []);
+				this.childs[index] = new Child(index);
 				continue;
 			}
 
 			const child = this.childs[index];
-
-			if (rButton.test(str)) {
-				const [, id] = str.match(rButton);
-				child.buttons.push(new Button(+id, ''));
-				continue;
-			}
-
-			if (child.buttons.length) {
-				child.buttons[child.buttons.length - 1].text += '\n' + str;
-			} else {
+			if (child) {
 				child.text += '\n' + str;
+			} else {
+				console.warn('parse: no child');
 			}
 		}
 		complete();
@@ -130,32 +141,88 @@ class Game {
 		let id = +window.location.hash.replace(/\D+/, ``);
 		id = isNaN(id) ? 0 : id;
 
+		this.history.push(id);
+
+		this.startLink.ariaDisabled = id > 0 ? 'false' : 'true';
+
 		if (!this.childs.hasOwnProperty(id)) {
-			//alert(`Paragraph is missing: ${id}`);
+			console.warn(`Paragraph is missing: ${id}`);
 			return;
 		}
-		this.gameDiv.innerHTML = this.childs[id].text.trim();
-		this.gameDiv.querySelectorAll(`p:empty`).forEach(p => p.remove());
+		this.gameDiv.innerHTML = this.childs[id].text;
 
-		for (const button of this.childs[id].buttons) {
-			this.gameDiv.insertAdjacentHTML(`beforeend`, `<a href="#${button.id}" class="button">${button.text}</a>`);
+		if (this.way) {
+			this.nodes.update([{id: id, shape: 'box', color: {background: '#00d025'}}]);
+
+			if (this.history.length > 1) {
+				const prev = this.history[this.history.length - 2];
+				this.edges
+				    .get()
+				    .filter(edge => edge.from === prev && edge.to === id || edge.from === id && edge.to === prev)
+				    .forEach(edge => {
+					    this.edges.update([{id: edge.id, color: {color: '#00d025', highlight: '#76f887'}}]);
+				    });
+			}
+
+			this.vis.focus(id, {
+				offset   : {
+					x: this.container.offsetWidth * .5,
+					y: 0
+				},
+				animation: {
+					duration      : 1000,
+					easingFunction: 'easeInOutQuad',
+				},
+			});
 		}
 
 	};
 
-	async start() {
-		const request = await fetch(this.path);
+	/**
+	 * @param base
+	 * @return {Promise<void>}
+	 */
+	async start(base) {
+		this.base = base;
+
+		const path = `/gamebook/book/${base}/main.md`;
+
+		const url = new URL(location.href);
+		this.way = url.searchParams.has('way');
+		this.container.classList.toggle('container-way', this.way);
+
+		const request = await fetch(path);
 		const response = await request.text();
 		this.parse(response);
 
-		//this.vis.setData({nodes: this.nodes, edges: this.edges});
-
 		addEventListener(`hashchange`, this.step);
-		this.step();
-		this.gameDiv.style.removeProperty('display');
 
-		document.querySelectorAll('.loader').forEach(e => e.remove());
+		this.step();
+	}
+
+	async route() {
+		const url = new URL(location.href);
+		const book = url.searchParams.get('book');
+
+		if (books[book]) {
+			document.body.classList.add('loading');
+			await this.start(book);
+			document.body.classList.remove('loading');
+		} else {
+			for (const [k, v] of Object.entries(books)) {
+				const url = new URL(location.href);
+				url.searchParams.delete('way');
+				url.searchParams.set('book', k);
+				const a = url.toString();
+				url.searchParams.set('way', '1');
+				const b = url.toString();
+				this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-item"><a href="${a}" class="button">${v}</a><a href="${b}" class="button" title="Отображать маршрут">🪡</a></div>`);
+			}
+		}
 	}
 }
+
+const game = new Game();
+game.route().then(_ => {});
 
 export {Game};
