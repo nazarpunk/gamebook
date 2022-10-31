@@ -22,9 +22,11 @@ h1, h2, h3, h4 {
 	text-align: center;
 }
 
-.img-center {
+img {
+	max-width: 100%;
 	display: block;
 	margin: 0 auto;
+	background-color: white;
 }
 
 a:hover {
