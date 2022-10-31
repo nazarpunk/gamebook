@@ -49,8 +49,8 @@ body.loading .container {
 	box-sizing: border-box;
 	max-width: 50rem;
 	margin: 0 auto;
-	padding: 0 1rem;
 	word-break: break-word;
+	padding: 0 1rem env(safe-area-inset-bottom);
 }
 
 .container-way {
@@ -80,6 +80,7 @@ body.loading .container {
 	transition: opacity 400ms;
 	border-radius: .5rem;
 	background-color: #242526;
+	margin-bottom: 1rem;
 }
 
 .well:empty {
