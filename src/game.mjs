@@ -2,9 +2,10 @@ const rBlock = /^\s*#\s*(\d+)\s*$/;
 const rNewLine = /\r?\n/;
 
 const books = {
-	'harrison-harry_become-steel_rat' : 'Гарри Гаррисон - Стань стальной крысой!',
-	'packard-edward_mystery-of-castle': 'Эдвард Паккард - Тайна Заброшенного Замка',
-	'brightfield-richard_hijacked'    : 'Ричард Брайтфилд - ПОХИЩЕНЫ!',
+	'harrison-harry_become-steel_rat': 'Гарри Гаррисон - Стань стальной крысой!',
+	'packard-edward_the_mystery_of_chimney_rock': 'Эдвард Паккард - Тайна Заброшенного Замка',
+	'brightfield-richard_hijacked': 'Ричард Брайтфилд - ПОХИЩЕНЫ!',
+	'jay-leibold_you-are-a-millionaire': 'Ты — миллионер',
 	//'test'                            : 'Test',
 };
 
@@ -189,12 +190,12 @@ class Game {
 			}
 
 			this.vis.focus(id, {
-				offset   : {
+				offset: {
 					x: this.container.offsetWidth * .5,
 					y: 0
 				},
 				animation: {
-					duration      : 1000,
+					duration: 1000,
 					easingFunction: 'easeInOutQuad',
 				},
 			});

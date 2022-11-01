@@ -74,6 +74,11 @@ body.loading .container {
 	grid-template-columns: 1fr auto;
 }
 
+.menu-item a:last-child {
+	display: flex;
+	align-items: center;
+}
+
 .well {
 	position: relative;
 	padding: 1px 1rem 1px;
@@ -85,6 +90,14 @@ body.loading .container {
 
 .well:empty {
 	opacity: 0;
+}
+
+@media screen and (max-width: 600px) {
+	.well {
+		margin-left: -1rem;
+		margin-right: -1rem;
+		border-radius: 0;
+	}
 }
 
 .button {
