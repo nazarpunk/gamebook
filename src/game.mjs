@@ -4,6 +4,7 @@ const rNewLine = /\r?\n/;
 const books = {
 	'harrison-harry_become-steel_rat' : 'Гарри Гаррисон - Стань стальной крысой!',
 	'packard-edward_mystery-of-castle': 'Эдвард Паккард - Тайна Заброшенного Замка',
+	'brightfield-richard_hijacked'    : 'Ричард Брайтфилд - ПОХИЩЕНЫ!',
 	//'test'                            : 'Test',
 };
 
@@ -51,6 +52,14 @@ class Game {
 			}
 		);
 
+		this.vis.on('stabilized', _ => {
+			if (!this.way) {
+				return;
+			}
+			localStorage.setItem(`${this.base}-nodes`, JSON.stringify(this.vis.getPositions()));
+		});
+
+
 		this.converter = new showdown.Converter({optionKey: 'value'});
 
 		this.step = this.step.bind(this);
@@ -87,6 +96,15 @@ class Game {
 	parse(text) {
 		let index = -1;
 
+		let nodePosition = {};
+
+		if (this.way) {
+			try {
+				nodePosition = JSON.parse(localStorage.getItem(`${this.base}-nodes`) ?? '{}')
+			} catch (_) {}
+		}
+
+
 		const complete = () => {
 			const child = this.childs[index];
 			if (!child) {
@@ -115,7 +133,13 @@ class Game {
 
 
 			if (this.way) {
-				this.nodes.add({id: index, label: `${index}`, fixed: index === 0});
+				const node = {id: index, label: `${index}`, fixed: index === 0};
+				if (nodePosition[node.id]) {
+					node.x = nodePosition[node.id].x;
+					node.y = nodePosition[node.id].y;
+				}
+
+				this.nodes.add(node);
 			}
 		};
 
