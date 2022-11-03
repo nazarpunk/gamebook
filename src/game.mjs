@@ -2,10 +2,26 @@ const rBlock = /^\s*#\s*(\d+)\s*$/;
 const rNewLine = /\r?\n/;
 
 const books = {
-	'harrison-harry_become-steel_rat': 'Гарри Гаррисон - Стань стальной крысой!',
-	'packard-edward_the_mystery_of_chimney_rock': 'Эдвард Паккард - Тайна Заброшенного Замка',
-	'brightfield-richard_hijacked': 'Ричард Брайтфилд - ПОХИЩЕНЫ!',
-	'jay-leibold_you-are-a-millionaire': 'Ты — миллионер',
+	'harrison-harry_become-steel_rat': {
+		author: 'Гарри Гаррисон',
+		name: 'Стань стальной крысой!'
+	},
+	'packard-edward_the_mystery_of_chimney_rock': {
+		author: 'Эдвард Паккард',
+		name: 'Тайна Заброшенного Замка'
+	},
+	'brightfield-richard_hijacked': {
+		author: 'Ричард Брайтфилд',
+		name: 'Похищены!'
+	},
+	'jay-leibold_you-are-a-millionaire': {
+		author: 'Джей Либолд',
+		name: 'Ты — миллионер'
+	},
+	'montgomery-raymond-almiran_journey-under-the-sea': {
+		author: 'Р. А. Монтгомери',
+		name: 'Путешествие на дно моря'
+	},
 	//'test'                            : 'Test',
 };
 
@@ -210,7 +226,7 @@ class Game {
 	async start(base) {
 		this.base = base;
 
-		const path = `/gamebook/book/${base}/main.md`;
+		const path = `/gamebook/book/${base}/book.md`;
 
 		const url = new URL(location.href);
 		this.way = url.searchParams.has('way');
@@ -234,14 +250,21 @@ class Game {
 			await this.start(book);
 			document.body.classList.remove('loading');
 		} else {
+			let author;
+
 			for (const [k, v] of Object.entries(books)) {
 				const url = new URL(location.href);
+				if (!author || author !== v.author) {
+					this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-head">${v.author}</div>`);
+					author = v.author;
+				}
+
 				url.searchParams.delete('way');
 				url.searchParams.set('book', k);
 				const a = url.toString();
 				url.searchParams.set('way', '1');
 				const b = url.toString();
-				this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-item"><a href="${a}" class="button">${v}</a><a href="${b}" class="button" title="Отображать маршрут">🪡</a></div>`);
+				this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-item"><a href="${a}" class="button">${v.name}</a><a href="${b}" class="button" title="Отображать маршрут">🪡</a></div>`);
 			}
 		}
 	}
@@ -249,5 +272,12 @@ class Game {
 
 const game = new Game();
 game.route().then(_ => {});
+
+if (0) {
+	for (let i = 9; i <= 36; i++) {
+		open(`https://www.litmir.me/BookBinary/192645/1392653152/i_${String(i).padStart(3, '0')}.png`, '_blank');
+	}
+}
+
 
 export {Game};

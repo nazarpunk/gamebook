@@ -67,6 +67,11 @@ body.loading .container {
 	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
+.menu-head {
+	font-weight: bold;
+	margin: 1rem 0 1rem;
+}
+
 .menu-item {
 	display: grid;
 	margin: 1rem 0 1rem;
