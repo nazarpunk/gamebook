@@ -196,6 +196,8 @@ class Game {
 		}
 		this.gameDiv.innerHTML = this.childs[id].text;
 
+		scroll(0, 0);
+
 		if (this.way) {
 			this.nodes.update([{id: id, shape: 'box', color: {background: '#00d025'}}]);
 
@@ -241,6 +243,10 @@ class Game {
 		this.parse(response);
 
 		addEventListener(`hashchange`, this.step);
+
+		if (!this.way){
+			this.visDiv.style.pointerEvents = 'none';
+		}
 
 		this.step();
 	}
