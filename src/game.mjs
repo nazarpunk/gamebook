@@ -22,6 +22,10 @@ const books = {
 		author: 'Р. А. Монтгомери',
 		name: 'Путешествие на дно моря'
 	},
+	'wilhelm-doug_scene-of-the-crime': {
+		author: 'Дуг Уилхелм',
+		name: 'Место преступления'
+	}
 	//'test'                            : 'Test',
 };
 
@@ -274,8 +278,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 9; i <= 36; i++) {
-		open(`https://www.litmir.me/BookBinary/192645/1392653152/i_${String(i).padStart(3, '0')}.png`, '_blank');
+	for (let i = 1; i <= 29; i++) {
+		const n = String(i).padStart(3, '0');
+		open(`https://www.litmir.me/BookBinary/194073/1393505937/i_${n}.png/${i}`, '_blank');
 	}
 }
 
