@@ -163,7 +163,7 @@ class Game {
 
 
 			if (this.way) {
-				const node = {id: index, label: `${index}`, fixed: index === 0};
+				const node = {id: index, label: `${index}`, fixed: false};
 				if (nodePosition[node.id]) {
 					node.x = nodePosition[node.id].x;
 					node.y = nodePosition[node.id].y;
