@@ -29,7 +29,11 @@ const books = {
 	'sara-compton_spencer-compton_daredevil-park': {
 		author: 'Сара и Спенсер Комптон',
 		name: 'Луна-парк для смельчаков'
-	}
+	},
+	'koltz-tony_vampire-express': {
+		author: 'Тони Кольтц',
+		name: 'В поезде с вампирами'
+	},
 
 	//'test'                            : 'Test',
 };
@@ -289,9 +293,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 1; i <= 29; i++) {
+	for (let i = 33; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/193755/1393334602/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/193950/1393426601/i_${n}.png/${i}`, '_blank');
 	}
 }
 
