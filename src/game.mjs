@@ -19,13 +19,18 @@ const books = {
 		name: 'Ты — миллионер'
 	},
 	'montgomery-raymond-almiran_journey-under-the-sea': {
-		author: 'Р. А. Монтгомери',
+		author: 'Рэймонд Алмиран Монтгомери',
 		name: 'Путешествие на дно моря'
 	},
 	'wilhelm-doug_scene-of-the-crime': {
 		author: 'Дуг Уилхелм',
 		name: 'Место преступления'
+	},
+	'sara-compton_spencer-compton_daredevil-park': {
+		author: 'Сара и Спенсер Комптон',
+		name: 'Луна-парк для смельчаков'
 	}
+
 	//'test'                            : 'Test',
 };
 
@@ -244,7 +249,7 @@ class Game {
 
 		addEventListener(`hashchange`, this.step);
 
-		if (!this.way){
+		if (!this.way) {
 			this.visDiv.style.pointerEvents = 'none';
 		}
 
@@ -286,7 +291,7 @@ game.route().then(_ => {});
 if (0) {
 	for (let i = 1; i <= 29; i++) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/194073/1393505937/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/193755/1393334602/i_${n}.png/${i}`, '_blank');
 	}
 }
 
