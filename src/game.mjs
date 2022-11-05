@@ -6,7 +6,7 @@ const books = {
 		author: 'Гарри Гаррисон',
 		name: 'Стань стальной крысой!'
 	},
-	'packard-edward_the_mystery_of_chimney_rock': {
+	'packard-edward_the-mystery-of-chimney-rock': {
 		author: 'Эдвард Паккард',
 		name: 'Тайна Заброшенного Замка'
 	},
