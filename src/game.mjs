@@ -22,6 +22,10 @@ const books = {
 		author: 'Рэймонд Алмиран Монтгомери',
 		name: 'Путешествие на дно моря'
 	},
+	'montgomery-raymond-almiran_behind-the-wheel': {
+		author: 'Рэймонд Алмиран Монтгомери',
+		name: 'За рулём'
+	},
 	'wilhelm-doug_scene-of-the-crime': {
 		author: 'Дуг Уилхелм',
 		name: 'Место преступления'
@@ -296,9 +300,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 30; i > 0; i--) {
+	for (let i = 33; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/193952/1393426818/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/192907/1392820595/i_${n}.png/${i}`, '_blank');
 	}
 }
 
