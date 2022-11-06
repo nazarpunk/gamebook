@@ -34,7 +34,10 @@ const books = {
 		author: 'Тони Кольтц',
 		name: 'В поезде с вампирами'
 	},
-
+	'montgomery-ramsey_outlaw-gulch': {
+		author: 'Рэмси Монтгомери',
+		name: 'Каньон разбойников'
+	},
 	//'test'                            : 'Test',
 };
 
@@ -293,9 +296,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 33; i > 0; i--) {
+	for (let i = 30; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/193950/1393426601/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/193952/1393426818/i_${n}.png/${i}`, '_blank');
 	}
 }
 
