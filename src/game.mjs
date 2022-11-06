@@ -292,6 +292,23 @@ class Game {
 				const b = url.toString();
 				this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-item"><a href="${a}" class="button">${v.name}</a><a href="${b}" class="button" title="Отображать маршрут">🪡</a></div>`);
 			}
+
+			if (0) {
+				author = undefined;
+				let out = '\n';
+
+				for (const [k, v] of Object.entries(books)) {
+					if (!author || author !== v.author) {
+						out += `### ${v.author}`+'\n\n';
+
+						author = v.author;
+					}
+					out += `[${v.name}](https://nazarpunk.github.io/gamebook/?book=${k})`+'\n\n';
+				}
+				console.log(out);
+
+			}
+
 		}
 	}
 }
