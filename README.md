@@ -4,6 +4,8 @@
 
 ### Эдвард Паккард
 
+[Пещера времени](https://nazarpunk.github.io/gamebook/?book=packard-edward_the-cave-of-time)
+
 [Тайна Заброшенного Замка](https://nazarpunk.github.io/gamebook/?book=packard-edward_the-mystery-of-chimney-rock)
 
 ### Ричард Брайтфилд
