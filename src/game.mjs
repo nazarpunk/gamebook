@@ -1,53 +1,7 @@
+import {books} from './book.mjs';
+
 const rBlock = /^\s*#\s*(\d+)\s*$/;
 const rNewLine = /\r?\n/;
-
-const books = {
-	'harrison-harry_become-steel_rat': {
-		author: 'Гарри Гаррисон',
-		name: 'Стань стальной крысой!'
-	},
-	'packard-edward_the-mystery-of-chimney-rock': {
-		author: 'Эдвард Паккард',
-		name: 'Тайна Заброшенного Замка'
-	},
-	'brightfield-richard_hijacked': {
-		author: 'Ричард Брайтфилд',
-		name: 'Похищены!'
-	},
-	'jay-leibold_you-are-a-millionaire': {
-		author: 'Джей Либолд',
-		name: 'Ты — миллионер'
-	},
-	'jay-leibold_secret-of-the-ninja': {
-		author: 'Джей Либолд',
-		name: 'Секрет ниндзя'
-	},
-	'montgomery-raymond-almiran_journey-under-the-sea': {
-		author: 'Рэймонд Алмиран Монтгомери',
-		name: 'Путешествие на дно моря'
-	},
-	'montgomery-raymond-almiran_behind-the-wheel': {
-		author: 'Рэймонд Алмиран Монтгомери',
-		name: 'За рулём'
-	},
-	'wilhelm-doug_scene-of-the-crime': {
-		author: 'Дуг Уилхелм',
-		name: 'Место преступления'
-	},
-	'sara-compton_spencer-compton_daredevil-park': {
-		author: 'Сара и Спенсер Комптон',
-		name: 'Луна-парк для смельчаков'
-	},
-	'koltz-tony_vampire-express': {
-		author: 'Тони Кольтц',
-		name: 'В поезде с вампирами'
-	},
-	'montgomery-ramsey_outlaw-gulch': {
-		author: 'Рэмси Монтгомери',
-		name: 'Каньон разбойников'
-	},
-	//'test'                            : 'Test',
-};
 
 class Child {
 	/**
@@ -303,11 +257,11 @@ class Game {
 
 				for (const [k, v] of Object.entries(books)) {
 					if (!author || author !== v.author) {
-						out += `### ${v.author}`+'\n\n';
+						out += `### ${v.author}` + '\n\n';
 
 						author = v.author;
 					}
-					out += `[${v.name}](https://nazarpunk.github.io/gamebook/?book=${k})`+'\n\n';
+					out += `[${v.name}](https://nazarpunk.github.io/gamebook/?book=${k})` + '\n\n';
 				}
 				console.log(out);
 
@@ -321,9 +275,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 29; i > 0; i--) {
+	for (let i = 38; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/194829/1393940999/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/193634/1393245073/i_${n}.png/${i}`, '_blank');
 	}
 }
 
