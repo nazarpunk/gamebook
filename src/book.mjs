@@ -5,6 +5,10 @@ const books = {
 		name: 'Стань стальной крысой!'
 	},
 	// Эдвард Паккард
+	'packard-edward_magic-master': {
+		author: 'Эдвард Паккард',
+		name: 'Великий волшебник'
+	},
 	'packard-edward_the-cave-of-time': {
 		author: 'Эдвард Паккард',
 		name: 'Пещера времени'
