@@ -251,7 +251,7 @@ class Game {
 				this.gameDiv.insertAdjacentHTML('beforeend', `<div class="menu-item"><a href="${a}" class="button">${v.name}</a><a href="${b}" class="button" title="Отображать маршрут">🪡</a></div>`);
 			}
 
-			if (0) {
+			if (1) {
 				author = undefined;
 				let out = '\n';
 
