@@ -14,6 +14,8 @@
 
 [Ты — миллионер](https://nazarpunk.github.io/gamebook/?book=jay-leibold_you-are-a-millionaire)
 
+[Секрет ниндзя](https://nazarpunk.github.io/gamebook/?book=jay-leibold_secret-of-the-ninja)
+
 ### Рэймонд Алмиран Монтгомери
 
 [Путешествие на дно моря](https://nazarpunk.github.io/gamebook/?book=montgomery-raymond-almiran_journey-under-the-sea)
