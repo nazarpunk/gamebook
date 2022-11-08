@@ -15,7 +15,11 @@ const books = {
 	},
 	'packard-edward_the-mystery-of-chimney-rock': {
 		author: 'Эдвард Паккард',
-		name: 'Тайна Заброшенного Замка'
+		name: 'Тайна заброшенного замка'
+	},
+	'packard-edward_dinosaur-island': {
+		author: 'Эдвард Паккард',
+		name: 'Остров динозавров'
 	},
 	// Ричард Брайтфилд
 	'brightfield-richard_hijacked': {

@@ -275,9 +275,9 @@ const game = new Game();
 game.route().then(_ => {});
 
 if (0) {
-	for (let i = 31; i > 0; i--) {
+	for (let i = 29; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/194271/1393593664/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/194272/1393593799/i_${n}.png/${i}`, '_blank');
 	}
 }
 
