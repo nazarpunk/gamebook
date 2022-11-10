@@ -13,6 +13,10 @@ const books = {
 		author: 'Эдвард Паккард',
 		name: 'Пещера времени'
 	},
+	'packard-edward_invaders-from-within': {
+		author: 'Эдвард Паккард',
+		name: 'Пришельцы из космоса'
+	},
 	'packard-edward_the-mystery-of-chimney-rock': {
 		author: 'Эдвард Паккард',
 		name: 'Тайна заброшенного замка'

@@ -8,6 +8,8 @@
 
 [Пещера времени](https://nazarpunk.github.io/gamebook/?book=packard-edward_the-cave-of-time)
 
+[Пришельцы из космоса](https://nazarpunk.github.io/gamebook/?book=packard-edward_invaders-from-within)
+
 [Тайна заброшенного замка](https://nazarpunk.github.io/gamebook/?book=packard-edward_the-mystery-of-chimney-rock)
 
 [Остров динозавров](https://nazarpunk.github.io/gamebook/?book=packard-edward_dinosaur-island)
