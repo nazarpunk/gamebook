@@ -6,6 +6,8 @@
 
 [Великий волшебник](https://nazarpunk.github.io/gamebook/?book=packard-edward_magic-master)
 
+[Викинги-завоеватели](https://nazarpunk.github.io/gamebook/?book=packard-edward_viking-raiders)
+
 [Пещера времени](https://nazarpunk.github.io/gamebook/?book=packard-edward_the-cave-of-time)
 
 [Пришельцы из космоса](https://nazarpunk.github.io/gamebook/?book=packard-edward_invaders-from-within)
@@ -45,3 +47,7 @@
 ### Рэмси Монтгомери
 
 [Каньон разбойников](https://nazarpunk.github.io/gamebook/?book=montgomery-ramsey_outlaw-gulch)
+
+### Роберт Лоуренс Стайн
+
+[Ночь в лесу оборотней](https://nazarpunk.github.io/gamebook/?book=stine-robert-lawrence_night-in-werewolf-woods)

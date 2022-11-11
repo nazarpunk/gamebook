@@ -9,6 +9,10 @@ const books = {
 		author: 'Эдвард Паккард',
 		name: 'Великий волшебник'
 	},
+	'packard-edward_viking-raiders': {
+		author: 'Эдвард Паккард',
+		name: 'Викинги-завоеватели'
+	},
 	'packard-edward_the-cave-of-time': {
 		author: 'Эдвард Паккард',
 		name: 'Пещера времени'
@@ -68,6 +72,11 @@ const books = {
 		author: 'Рэмси Монтгомери',
 		name: 'Каньон разбойников'
 	},
+	'stine-robert-lawrence_night-in-werewolf-woods': {
+		author: 'Роберт Лоуренс Стайн',
+		name: 'Ночь в лесу оборотней'
+	}
+
 	//'test'                            : 'Test',
 };
 

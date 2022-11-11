@@ -218,7 +218,9 @@ class Game {
 
 		addEventListener(`hashchange`, this.step);
 
-		if (!this.way) {
+		if (this.way) {
+			this.visDiv.style.removeProperty('pointer-events');
+		} else {
 			this.visDiv.style.pointerEvents = 'none';
 		}
 
@@ -235,6 +237,8 @@ class Game {
 			document.body.classList.remove('loading');
 		} else {
 			let author;
+
+			this.visDiv.style.pointerEvents = 'none';
 
 			for (const [k, v] of Object.entries(books)) {
 				const url = new URL(location.href);
@@ -277,7 +281,7 @@ game.route().then(_ => {});
 if (0) {
 	for (let i = 29; i > 0; i--) {
 		const n = String(i).padStart(3, '0');
-		open(`https://www.litmir.me/BookBinary/195175/1394189883/i_${n}.png/${i}`, '_blank');
+		open(`https://www.litmir.me/BookBinary/194960/1394024815/i_${n}.png/${i}`, '_blank');
 	}
 }
 
