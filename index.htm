@@ -8,21 +8,23 @@
 	<link href="src/main.css" rel="stylesheet">
 	<script src="src/showdown.min.js" type="text/javascript" defer></script>
 	<script src="src/vis.min.js" type="text/javascript" defer></script>
-	<script src="src/book.mjs" type="module" defer></script>
-	<script src="src/game.mjs" type="module" defer></script>
+	<script src="src/graph/three.js" type="text/javascript" defer></script>
+	<script src="src/graph/three-spritetext.min.js" type="text/javascript" defer></script>
+	<script src="src/graph/3d-force-graph.min.js" type="text/javascript" defer></script>
+	<script src="src/book/book.mjs" type="module" defer></script>
+	<script src="src/book/game.mjs" type="module" defer></script>
 </head>
 <body>
-
-<div class="vis"></div>
 
 <div class="container">
 	<div class="menu">
 		<a href="/gamebook" data-action="list" class="button">Оглавление</a>
 		<a href="#0" data-action="start" class="button" aria-disabled="true">Начало</a>
 	</div>
-
 	<div class="game well"></div>
 </div>
+
+<div class="graph"></div>
 
 <div class="loader">
 	<div>

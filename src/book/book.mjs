@@ -1,4 +1,9 @@
 const books = {
+	// Ольга Голотвина
+	'golotvina-olga_captain-of-the-sea-witch': {
+		author: 'Ольга Голотвина',
+		name: 'Капитан «Морской ведьмы»'
+	},
 	// Гарри Гаррисон
 	'harrison-harry_become-steel_rat': {
 		author: 'Гарри Гаррисон',
@@ -75,8 +80,7 @@ const books = {
 	'stine-robert-lawrence_night-in-werewolf-woods': {
 		author: 'Роберт Лоуренс Стайн',
 		name: 'Ночь в лесу оборотней'
-	}
-
+	},
 	//'test'                            : 'Test',
 };
 
