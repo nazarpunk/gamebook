@@ -1,0 +1,41 @@
+:: StoryTitle
+Untitled Story
+
+
+:: StoryData
+{
+  "ifid": "91ED73E4-6F67-43A0-8E00-BBD148BF413E",
+  "format": "Harlowe",
+  "format-version": "3.3.5",
+  "start": "Untitled Passage",
+  "zoom": 1
+}
+
+
+:: Untitled Passage {"position":"775,375","size":"100,100"}
+мвмвммввмв
+в
+(set: $sds to 11)в
+мв
+ввмвм
+(if:($sds is ""and$sds is ""))[Your Text Here]
+
+мв
+мв
+м
+в(more:)[Your Text Here]
+
+вм 
+[[вв->аувава]]
+
+
+:: Untitled Passage 1 {"position":"1550,450","size":"100,100"}
+
+
+
+:: Untitled Passage 2 {"position":"1350,250","size":"100,100"}
+
+
+
+:: аувава {"position":"1075,575","size":"100,100"}
+
